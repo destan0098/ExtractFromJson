@@ -11,21 +11,21 @@ jfile = open(args.input)
 json_data = json.load(jfile)
 export = []
 for i in json_data:
-    ip = i.get('ip', 'No IP')
-    skip_ip = False
+    ip = i.get('id', 'No ID')
+    skip_id = False
 
     for j in i.get('data', []):
-        if 'honeypot' in j.get('tags', []):
-            skip_ip = True
+        if 'johndoe' in j.get('name', []):
+            skip_id = True
             break
 
-    if not skip_ip:
+    if not skip_id:
         for j in i.get('data', []):
-            tags = j.get('tags', [])
-            if 'iot' in tags or 'ics' in tags:
-                product = j.get('product', 'No Product')
-                tags_str = ', '.join(tags)
-                out = f"{ip}    {product}    {tags_str}"
+            tags = j.get('name', [])
+            if 'james' in name or 'alex' in name:
+                family = j.get('family', 'No Family')
+                name_str = ', '.join(name)
+                out = f"{id}    {family}    {name_str}"
                 # print(out)
                 export.append(out)
                 break
